@@ -1,22 +1,20 @@
-import React from 'react'
+import { Movies } from './components/Movies';
 import { Navbar } from './components/Navbar';
 import { useNowPlaying } from './hooks/useNowPlaying';
 import { usePopular } from './hooks/usePopular';
 import { useTopRated } from './hooks/useTopRated';
-import { useUpComing } from './hooks/useUpComing';
+import { MoviesProvider } from './context/MoviesProvider';
 
 const App = () => {
 
-// useTopRated();
-// usePopular();
-// useNowPlaying();
-// useUpComing();
-
   return (
-    <>
+ 
+    <MoviesProvider>
       <Navbar/>
-      <div>App</div>
-    </>
+      <Movies/>
+    </MoviesProvider>
+    
+   
   )
 }
 
