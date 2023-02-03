@@ -21,7 +21,11 @@ export const MoviesProvider = ({children}: Props) => {
         popular: popular,
         nowPlaying: nowPlaying,
         topRated: topRated,
-        upComing: upComing
+        upComing: upComing,
+        isLoadingPopular,
+        isLoadingNowPlaying,
+        isLoadingTopRated,
+        isLoadingUpComing,
     
     }
 

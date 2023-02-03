@@ -87,7 +87,11 @@ export interface MoviesState{
     topRated: Result[] | [];
     nowPlaying: Result[] | [];
     popular:Result[] | [];
-    upComing: Result[] | []
+    upComing: Result[] | [];
+    isLoadingPopular: boolean
+isLoadingNowPlaying: boolean
+isLoadingTopRated: boolean
+isLoadingUpComing: boolean
 }
 
 

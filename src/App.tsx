@@ -1,20 +1,16 @@
+import { Route, Routes } from 'react-router-dom';
 import { Movies } from './components/Movies';
 import { Navbar } from './components/Navbar';
-import { useNowPlaying } from './hooks/useNowPlaying';
-import { usePopular } from './hooks/usePopular';
-import { useTopRated } from './hooks/useTopRated';
-import { MoviesProvider } from './context/MoviesProvider';
+import { SingleMovieCard } from './components/SingleMovieCard';
+import { MoviesScreen } from './screens/MoviesScreen';
 
 const App = () => {
 
   return (
- 
-    <MoviesProvider>
-      <Navbar/>
-      <Movies/>
-    </MoviesProvider>
-    
-   
+    <Routes>
+      <Route path='/' element={<MoviesScreen/>} />
+      <Route path='/movie/:id' element={<SingleMovieCard/>}/>
+    </Routes>
   )
 }
 
