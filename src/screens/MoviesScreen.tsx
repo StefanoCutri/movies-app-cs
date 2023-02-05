@@ -6,7 +6,7 @@ export const MoviesScreen = () => {
   return (
     <>
         <Navbar />
-      <Movies/>
+        <Movies/>
     </>
   )
 }

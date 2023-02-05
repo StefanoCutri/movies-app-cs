@@ -7,10 +7,11 @@
 .search-bar{
     display: flex;
     padding: 0 10px;
+    margin-right: 3rem;
 }
 
 .search-bar input{
-    border: 1.2px solid #0C62BC;
+    border: 1.2px solid #bc0c0c;
     border-radius: 10px;    
     color: white;
     background: none;
@@ -27,9 +28,9 @@
 
 .navbar{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: rgb(3, 40, 72);
+    background-color: rgb(0, 0, 0);
 }
 
 .toggle-button{
@@ -43,7 +44,7 @@
 
 .toggle-button .fa-bars{
     font-size: 2.5rem;
-    color: #0C62BC;
+    color: #bc0c0c;
 }
 
 @media (max-width: 768px){

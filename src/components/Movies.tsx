@@ -6,9 +6,7 @@ import '../styles/movie-card.css';
 export const Movies = ()=> {
 
     const {movies_state} = useContext(MoviesContext);
-
     
-    console.log(movies_state.isLoadingPopular)
     return (
     <>
         <p className="movie-type">Popular</p>
