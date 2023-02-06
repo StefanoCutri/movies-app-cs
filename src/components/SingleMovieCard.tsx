@@ -8,8 +8,10 @@ import { useMovieCast } from "../hooks/useMovieCast";
 export const SingleMovieCard = () => { 
 
    const moviesState = useLocation().state as Result;
-   const {cast} = useMovieCast(moviesState.id)
-   
+   const {cast} = useMovieCast(moviesState.id);
+
+   const newArray = cast.splice(-20);
+
     return(
         <div style={{
             width: '100%'
@@ -28,8 +30,8 @@ export const SingleMovieCard = () => {
         >
             <div className="single-movie-content">
                 <div className="movie-title">
-                <h1> {moviesState.original_title} -</h1>
-                <span>{moviesState.release_date.slice(0, 4)}</span>
+                    <span id="original-title"> {moviesState.original_title} - </span>
+                    <span>{moviesState.release_date.slice(0, 4)}</span>
                 </div>
                
                 <div className="movie-info">
@@ -37,19 +39,30 @@ export const SingleMovieCard = () => {
                 </div>
             </div>
 
-            <div className="movie-additional-info">
-                <p>Cast:</p> {
-                    cast.map(actor => (
-                        <span key={actor.id}>
-                            <p>
-                            {actor.name}, 
-                            </p>
-                        </span>
-                    ))
+            
+               <div className="cast">
+                <span className="cast-preview">Cast: </span>
+                {
+                    newArray.map((act, i, row) => {
+                        if (i + 1 !== row.length) {                     
+                            return (
+                            <span key={act.id} className='cast-name'>
+                                {act.name},
+                            </span>
+                            )
+                        }else{
+                            return (
+                                <span key={act.id} className='cast-name'>
+                                {act.name}.
+                            </span>
+                            )
+                        }
+                    })
                 }
+               
+               
+               </div>
             </div>
-        
-        </div>
             
         </div>
     )

@@ -4,9 +4,10 @@
     height: 100vh;
     background: no-repeat center center / cover;
     z-index: -1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    grid-auto-rows: minmax(100px, auto);
 }
 
 
@@ -22,7 +23,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    ;
+}
+
+#original-title{
+    font-size: 1.7rem
 }
 
 h1{
@@ -43,7 +47,28 @@ p{
 
 .movie-additional-info{
     color: #fff;
-    text-align: start;
     padding: 0;
+}
+
+.cast{
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0.5em 0.5em 0.5em 0;
+    word-break: break-word;
+    display: block;
+    padding: 2rem 0;
+}
+
+.cast-preview{
+    word-break: break-word;
+    color: #777;
+    padding: 0;
+
+}
+
+.cast-name{
+    padding: 0;
+    margin: 0;
+    color: #fff;
 }
 
