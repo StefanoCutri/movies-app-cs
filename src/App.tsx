@@ -1,6 +1,6 @@
 import { Route, Routes} from 'react-router-dom';
 import { SingleMovieCard } from './components/SingleMovieCard';
-import { useGenresLocalStorage } from './helpers/useGenresLocalStorage';
+import { useGenresLocalStorage } from './hooks/useGenresLocalStorage';
 import { MoviesScreen } from './screens/MoviesScreen';
 
 const App = () => {

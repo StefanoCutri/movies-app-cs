@@ -4,7 +4,6 @@ import { Navbar } from "./Navbar"
 
 import '../styles/single-movie.css'
 import { useMovieCast } from "../hooks/useMovieCast";
-import { useMovieGenres } from "../hooks/useMovieGenres";
 
 export const SingleMovieCard = () => { 
 
@@ -13,7 +12,6 @@ export const SingleMovieCard = () => {
 
    const newArray = cast.slice(0, 5);
 
-   const res = useMovieGenres(moviesState.genre_ids);
 
    const ids = localStorage.getItem('genresIds');
    console.log(JSON.parse(ids as any))
