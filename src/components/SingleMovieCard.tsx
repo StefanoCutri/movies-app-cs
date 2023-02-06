@@ -4,13 +4,21 @@ import { Navbar } from "./Navbar"
 
 import '../styles/single-movie.css'
 import { useMovieCast } from "../hooks/useMovieCast";
+import { useMovieGenres } from "../hooks/useMovieGenres";
 
 export const SingleMovieCard = () => { 
 
    const moviesState = useLocation().state as Result;
    const {cast} = useMovieCast(moviesState.id);
 
-   const newArray = cast.splice(-20);
+   const newArray = cast.slice(0, 5);
+
+   const res = useMovieGenres(moviesState.genre_ids);
+
+   const ids = localStorage.getItem('genresIds');
+   console.log(JSON.parse(ids as any))
+
+   
 
     return(
         <div style={{
@@ -31,7 +39,7 @@ export const SingleMovieCard = () => {
             <div className="single-movie-content">
                 <div className="movie-title">
                     <span id="original-title"> {moviesState.original_title} - </span>
-                    <span>{moviesState.release_date.slice(0, 4)}</span>
+                    <span className="release-date">{moviesState.release_date.slice(0, 4)}</span>
                 </div>
                
                 <div className="movie-info">
@@ -47,7 +55,7 @@ export const SingleMovieCard = () => {
                         if (i + 1 !== row.length) {                     
                             return (
                             <span key={act.id} className='cast-name'>
-                                {act.name},
+                                {act.name}, 
                             </span>
                             )
                         }else{

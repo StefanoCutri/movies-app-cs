@@ -2,5 +2,5 @@
 import axios from "axios";
 
 export const moviesApi = axios.create({
-    baseURL: "https://api.themoviedb.org/3/movie"
+    baseURL: "https://api.themoviedb.org/3"
 });

@@ -14,7 +14,6 @@
 .single-movie-content{
     
     height: 100%;
-    width: 60%;
     color: #fff;
 
 }
@@ -23,24 +22,26 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-}
-
-#original-title{
-    font-size: 1.7rem
-}
-
-h1{
-    margin: 0;
     padding: 2rem 0 0 2rem;
 }
 
+#original-title{
+    font-size: 2.4rem;
+}
+
+.movie-info{
+    padding: 2rem 0 0 2rem;
+}
+
+.release-date{
+    margin-left: .4rem;
+}
+
 span{
-    padding: 2.4rem 0 0 .8rem;
     font-size: 1.2rem;
 }
 
 p{
-     padding: .6rem 0 0 2rem;
      width: 50%;
      font-size: 1.1rem;
 }
