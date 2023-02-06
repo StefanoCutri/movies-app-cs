@@ -4,6 +4,7 @@ import { Navbar } from "./Navbar"
 
 import '../styles/single-movie.css'
 import { useMovieCast } from "../hooks/useMovieCast";
+import { filterGenresById } from "../helpers/filterGenresById";
 
 export const SingleMovieCard = () => { 
 
@@ -12,11 +13,10 @@ export const SingleMovieCard = () => {
 
    const newArray = cast.slice(0, 5);
 
-
-   const ids = localStorage.getItem('genresIds');
-   console.log(JSON.parse(ids as any))
-
-   
+   const movieGenres = filterGenresById(moviesState.genre_ids)
+   const n = [] as string[];
+   movieGenres.forEach(g => n.push(g.name));
+   console.log(n);
 
     return(
         <div style={{
@@ -36,8 +36,8 @@ export const SingleMovieCard = () => {
         >
             <div className="single-movie-content">
                 <div className="movie-title">
-                    <span id="original-title"> {moviesState.original_title} - </span>
-                    <span className="release-date">{moviesState.release_date.slice(0, 4)}</span>
+                    <span id="original-title"> {moviesState.original_title}</span>
+                    <span className="release-date">({moviesState.release_date.slice(0, 4)})</span>
                 </div>
                
                 <div className="movie-info">
@@ -67,6 +67,42 @@ export const SingleMovieCard = () => {
                 }
                
                
+               <div className="cast">
+                <span className="cast-preview">Genres: </span>
+                {
+
+                    n.map((genre, i, row )=>{
+                            if (i + 1 !== row.length) {                     
+                            return (
+                            <span key={genre} className='cast-name'>
+                                {genre}
+                            </span>
+                            )
+                        }else{
+                            return (
+                                <span key={genre} className='cast-name'>
+                                {genre}.
+                            </span>
+                            )
+                        }
+                    })
+                    // n.map((act, i, row) => {
+                    //     if (i + 1 !== row.length) {                     
+                    //         return (
+                    //         <span key={act.name} className='cast-name'>
+                    //             {act.name}, 
+                    //         </span>
+                    //         )
+                    //     }else{
+                    //         return (
+                    //             <span key={act.id} className='cast-name'>
+                    //             {act.name}.
+                    //         </span>
+                    //         )
+                    //     }
+                    // })
+                }
+               </div>
                </div>
             </div>
             
