@@ -4,17 +4,15 @@
     height: 100vh;
     background: no-repeat center center / cover;
     z-index: -1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    grid-auto-rows: minmax(100px, auto);
+    display: flex;
+    flex-direction: column;
 }
 
 
-.single-movie-content{
-    
-    height: 100%;
+.left-column{
+    height: min-content;
     color: #fff;
+    margin-top: 3rem;
 
 }
 
@@ -26,24 +24,22 @@
 }
 
 #original-title{
-    font-size: 2.4rem;
-}
-
-.movie-info{
-    padding: 2rem 0 0 2rem;
+    font-size: 3rem;
 }
 
 .release-date{
-    margin: .4rem 0 0 2rem;
-}
-
-span{
+    margin: 1rem 0 0 2rem;
     font-size: 1.2rem;
 }
 
-p{
+span{
+    font-size: 1rem;
+}
+
+.overview{
      width: 50%;
-     font-size: 1.1rem;
+     font-size: 1.2rem;
+     padding-left: 2rem;
 }
 
 .movie-additional-info{
@@ -51,25 +47,42 @@ p{
     padding: 0;
 }
 
-.cast{
+.right-column{
     font-size: 14px;
     line-height: 20px;
-    margin: 0.5em 0.5em 0.5em 0;
+    margin: 0.5em 0 0.5em 0;
     word-break: break-word;
     display: block;
-    padding: 2rem 0;
+    padding: 2rem 0 2rem 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.cast-preview{
+.info-preview{
     word-break: break-word;
     color: #777;
     padding: 0;
 
 }
 
-.cast-name{
+.info-name{
     padding: 0;
     margin: 0;
     color: #fff;
 }
+
+
+/* mediaqueries */
+
+@media (max-width: 680px){
+    .movie-title{ 
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      /* padding: 0; */
+    }
+
+
+}
+
 
