@@ -9,7 +9,6 @@ import { filterGenresById } from "../helpers/filterGenresById";
 export const SingleMovieCard = () => {
   const moviesState = useLocation().state as Result;
   const { cast } = useMovieCast(moviesState.id);
-  console.log(moviesState);
 
   //   map the cast: "one, two and three"
   const newArray = cast.slice(0, 5);

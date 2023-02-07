@@ -1,6 +1,8 @@
 import "../styles/navbar.css";
 import logoImg from "../assets/StefanoMovies-1.png";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useDebouncedValue } from "../hooks/useDebouncedValue";
+import { SearchInput } from "./SearchInput";
 
 export const Navbar = () => {
   const navRef = useRef();
@@ -13,9 +15,7 @@ export const Navbar = () => {
       <div className="brand-logo">
         <img src={logoImg} alt="" />
       </div>
-      <div className="search-bar" ref={navRef}>
-        <input className="input" placeholder="Search movies" />
-      </div>
+      <SearchInput navRef={navRef} />
       <div className="toggle-button" onClick={showNavbar}>
         <i className="fa fa-bars"></i>
       </div>
