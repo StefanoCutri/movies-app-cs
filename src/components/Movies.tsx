@@ -1,63 +1,82 @@
-import {useContext} from "react";
+import { useContext, useReducer } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 import { MovieCard } from "./MovieCard";
-import '../styles/movie-card.css';
+import "../styles/movie-card.css";
+import { moviesReducer } from "../reducer/moviesReducer";
+import { usePopular } from "../hooks/usePopular";
+import { useNowPlaying } from "../hooks/useNowPlaying";
+import { useTopRated } from "../hooks/useTopRated";
+import { useUpComing } from "../hooks/useUpComing";
 
-export const Movies = ()=> {
+export const Movies = () => {
+  const { moviesState } = useContext(MoviesContext);
+  const { popular, isLoadingPopular } = usePopular();
+  const { nowPlaying, isLoadingNowPlaying } = useNowPlaying();
+  const { topRated, isLoadingTopRated } = useTopRated();
+  const { upComing, isLoadingUpComing } = useUpComing();
 
-    const {movies_state} = useContext(MoviesContext);
-    
-    return (
+  console.log(moviesState);
+  return (
     <>
-        <p className="movie-type">Popular</p>
-        <div className="movies-container">
-            {
-            movies_state.popular.map(p => {
-                return ( <MovieCard movieInfo={{
-                    movie: p,
-                    isLoading: movies_state.isLoadingPopular
-                }} key={p.id} />)
-            })
-            }
-        </div>
+      <p className="movie-type">Popular</p>
+      <div className="movies-container">
+        {popular.map((p) => {
+          return (
+            <MovieCard
+              movieInfo={{
+                movie: p,
+                isLoading: isLoadingPopular,
+              }}
+              key={p.id}
+            />
+          );
+        })}
+      </div>
 
-        <p className="movie-type">Top rated</p>
-        <div className="movies-container">
-            {
-            movies_state.topRated.map(p => {
-                return ( <MovieCard movieInfo={{
-                    movie: p,
-                    isLoading: movies_state.isLoadingTopRated
-                }} key={p.id} />)
-            })
-            }
-        </div>
+      <p className="movie-type">Top rated</p>
+      <div className="movies-container">
+        {topRated.map((p) => {
+          return (
+            <MovieCard
+              movieInfo={{
+                movie: p,
+                isLoading: isLoadingTopRated,
+              }}
+              key={p.id}
+            />
+          );
+        })}
+      </div>
 
-        <p className="movie-type">Now playing</p>
-        <div className="movies-container">
-            {
-            movies_state.nowPlaying.map(p => {
-                return ( <MovieCard movieInfo={{
-                    movie: p,
-                    isLoading: movies_state.isLoadingNowPlaying
-                }} key={p.id} />)
-            })
-            }
-        </div>
+      <p className="movie-type">Now playing</p>
+      <div className="movies-container">
+        {nowPlaying.map((p) => {
+          return (
+            <MovieCard
+              movieInfo={{
+                movie: p,
+                isLoading: isLoadingNowPlaying,
+              }}
+              key={p.id}
+            />
+          );
+        })}
+      </div>
 
-        <p className="movie-type">Up coming</p>
-        <div className="movies-container">
-            {
-            movies_state.upComing.map(p => {
-                return ( <MovieCard movieInfo={{
-                    movie: p,
-                    isLoading: movies_state.isLoadingUpComing
-                }} key={p.id} />)
-            })
-            }
-        </div>
-
-        </>
-    )
-
-}
+      <p className="movie-type">Up coming</p>
+      <div className="movies-container">
+        {upComing.map((p) => {
+          return (
+            <MovieCard
+              movieInfo={{
+                movie: p,
+                isLoading: isLoadingUpComing,
+              }}
+              key={p.id}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
+};

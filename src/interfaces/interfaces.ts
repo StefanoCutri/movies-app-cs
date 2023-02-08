@@ -1,17 +1,3 @@
-import { To } from "react-router-dom";
-
-export interface Result {
-    backdrop_path:     string;
-    genre_ids:         number[];
-    id:                number;
-    original_title:    string;
-    overview:          string;
-    poster_path:       string;
-    release_date:      string;
-    title:             string;
-    video:             boolean;
-    vote_average:      number;
-}
 
 export interface UpComing {
     page:          number;
@@ -61,7 +47,6 @@ export interface TopRated {
     total_pages:   number;
     total_results: number;
 }
-
 export interface Result {
     adult:             boolean;
     backdrop_path:     string;
@@ -84,14 +69,15 @@ export interface MoviesContextInterface{
 }
 
 export interface MoviesState{
-    topRated: Result[] | [];
-    nowPlaying: Result[] | [];
-    popular:Result[] | [];
-    upComing: Result[] | [];
-    isLoadingPopular: boolean
-isLoadingNowPlaying: boolean
-isLoadingTopRated: boolean
-isLoadingUpComing: boolean
+    // topRated: Result[] | [];
+    // nowPlaying: Result[] | [];
+    // popular:Result[] | [];
+    // upComing: Result[] | [];
+    // isLoadingPopular: boolean;
+    // isLoadingNowPlaying: boolean;
+    // isLoadingTopRated: boolean;
+    // isLoadingUpComing: boolean;
+    filteredMovies: Result[] | [];
 }
 
 export interface CastInterface {

@@ -1,7 +1,6 @@
 import "../styles/navbar.css";
 import logoImg from "../assets/StefanoMovies-1.png";
-import { useRef, useState, useEffect } from "react";
-import { useDebouncedValue } from "../hooks/useDebouncedValue";
+import { useRef } from "react";
 import { SearchInput } from "./SearchInput";
 
 export const Navbar = () => {
