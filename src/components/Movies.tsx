@@ -1,4 +1,4 @@
-import { useContext, useReducer } from "react";
+import { useContext, useReducer, useEffect } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 import { MovieCard } from "./MovieCard";
 import "../styles/movie-card.css";
@@ -15,7 +15,12 @@ export const Movies = () => {
   const { topRated, isLoadingTopRated } = useTopRated();
   const { upComing, isLoadingUpComing } = useUpComing();
 
-  console.log(moviesState);
+  const mState = useContext(MoviesContext);
+
+  useEffect(() => {
+    console.log(moviesState);
+  }, [moviesState]);
+
   return (
     <>
       <p className="movie-type">Popular</p>

@@ -7,13 +7,16 @@ export const SearchInput = ({ navRef }: any) => {
   const [inputValue, setInputValue] = useState("");
 
   const { filteredMovies } = useSearchByQuery(inputValue);
+  const moviesState = {
+    filteredMovies: filteredMovies,
+  };
+  const [state, dispatch] = useReducer(moviesReducer, moviesState);
+  const dispatchFilteredMovies = () => {
+    dispatch({ type: "addFilteredMovies", payload: filteredMovies });
+  };
 
-  // const [state, dispatch] = useReducer(moviesReducer, filteredMovies);
-  // const dispatchFilteredMovies = () => {
-  //   dispatch({ type: "addFilteredMovies", payload: filteredMovies });
-  // };
   useEffect(() => {
-    // dispatchFilteredMovies();
+    dispatchFilteredMovies();
   }, [inputValue]);
 
   return (
