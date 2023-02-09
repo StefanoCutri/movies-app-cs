@@ -1,23 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState, useReducer } from "react";
 import { useSearchByQuery } from "../hooks/useSearchByQuery";
 import { moviesReducer } from "../reducer/moviesReducer";
 
 export const SearchInput = ({ navRef }: any) => {
   const [inputValue, setInputValue] = useState("");
-
   const { filteredMovies } = useSearchByQuery(inputValue);
+
   const moviesState = {
     filteredMovies: filteredMovies,
   };
+
   const [state, dispatch] = useReducer(moviesReducer, moviesState);
+
   const dispatchFilteredMovies = () => {
     dispatch({ type: "addFilteredMovies", payload: filteredMovies });
   };
 
   useEffect(() => {
     dispatchFilteredMovies();
-  }, [inputValue]);
+  }, [filteredMovies]);
 
   return (
     <div className="search-bar" ref={navRef}>

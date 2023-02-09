@@ -1,4 +1,4 @@
-import { useContext, useReducer, useEffect } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 import { MovieCard } from "./MovieCard";
 import "../styles/movie-card.css";
@@ -15,14 +15,28 @@ export const Movies = () => {
   const { topRated, isLoadingTopRated } = useTopRated();
   const { upComing, isLoadingUpComing } = useUpComing();
 
-  const mState = useContext(MoviesContext);
+  const [state, dispatch] = useReducer(moviesReducer, moviesState);
+  const filteredState = useContext(MoviesContext);
 
   useEffect(() => {
-    console.log(moviesState);
-  }, [moviesState]);
+    console.log(state.filteredMovies);
+  }, [filteredState]);
 
   return (
     <>
+      <div className="movies-container">
+        {filteredState.moviesState.filteredMovies.map((p) => {
+          return (
+            <MovieCard
+              movieInfo={{
+                movie: p,
+                isLoading: isLoadingTopRated,
+              }}
+              key={p.id}
+            />
+          );
+        })}
+      </div>
       <p className="movie-type">Popular</p>
       <div className="movies-container">
         {popular.map((p) => {
