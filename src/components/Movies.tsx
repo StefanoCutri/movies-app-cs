@@ -10,6 +10,7 @@ import { useUpComing } from "../hooks/useUpComing";
 
 export const Movies = () => {
   const { moviesState } = useContext(MoviesContext);
+
   const { popular, isLoadingPopular } = usePopular();
   const { nowPlaying, isLoadingNowPlaying } = useNowPlaying();
   const { topRated, isLoadingTopRated } = useTopRated();
@@ -17,10 +18,6 @@ export const Movies = () => {
 
   const [state, dispatch] = useReducer(moviesReducer, moviesState);
   const filteredState = useContext(MoviesContext);
-
-  // useEffect(() => {
-  //   console.log(state.filteredMovies);
-  // }, [filteredState]);
 
   return (
     <>

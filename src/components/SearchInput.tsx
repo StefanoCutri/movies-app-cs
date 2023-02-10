@@ -1,7 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { useState, useReducer, useContext } from "react";
-import { useSearchByQuery } from "../hooks/useSearchByQuery";
-import { moviesReducer } from "../reducer/moviesReducer";
+import React, { useEffect } from "react";
+import { useState, useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 import { moviesApi } from "../api/moviesApi";
 import { Result } from "../interfaces/interfaces";
