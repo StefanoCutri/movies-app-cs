@@ -9,8 +9,7 @@ export const moviesReducer = (
   switch (action.type) {
     case "addFilteredMovies":
       return {
-        ...state,
-        filteredMovies: [...state.filteredMovies, ...action.payload],
+        filteredMovies: [...action.payload],
       };
 
     default:

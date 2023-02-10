@@ -1,25 +1,41 @@
 import React, { useEffect, useRef } from "react";
-import { useState, useReducer } from "react";
+import { useState, useReducer, useContext } from "react";
 import { useSearchByQuery } from "../hooks/useSearchByQuery";
 import { moviesReducer } from "../reducer/moviesReducer";
+import { MoviesContext } from "../context/MoviesContext";
+import { moviesApi } from "../api/moviesApi";
+import { Result } from "../interfaces/interfaces";
 
 export const SearchInput = ({ navRef }: any) => {
   const [inputValue, setInputValue] = useState("");
-  const { filteredMovies } = useSearchByQuery(inputValue);
+  const [filteredMovies, setFilteredMovies] = useState<Result[]>([]);
+  const { filtMovies } = useContext(MoviesContext);
 
-  const moviesState = {
-    filteredMovies: filteredMovies,
-  };
+  const api_key = "913e10c847c55fbb2045a16908b5870b";
 
-  const [state, dispatch] = useReducer(moviesReducer, moviesState);
+  const getFilteredMovie = () => {
+    if (inputValue.length === 0) {
+      filtMovies([]);
+      return;
+    }
+    const resp = moviesApi.get(
+      `/search/movie?api_key=${api_key}&=en-US&query=${inputValue}&page=1&include_adult=false`
+    );
+    resp
+      .then((res) => {
+        filtMovies(res.data.results);
+        setFilteredMovies(res.data.results);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
 
-  const dispatchFilteredMovies = () => {
-    dispatch({ type: "addFilteredMovies", payload: filteredMovies });
+    return filteredMovies;
   };
 
   useEffect(() => {
-    dispatchFilteredMovies();
-  }, [filteredMovies]);
+    getFilteredMovie();
+  }, [inputValue]);
 
   return (
     <div className="search-bar" ref={navRef}>

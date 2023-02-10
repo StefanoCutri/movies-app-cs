@@ -18,9 +18,9 @@ export const Movies = () => {
   const [state, dispatch] = useReducer(moviesReducer, moviesState);
   const filteredState = useContext(MoviesContext);
 
-  useEffect(() => {
-    console.log(state.filteredMovies);
-  }, [filteredState]);
+  // useEffect(() => {
+  //   console.log(state.filteredMovies);
+  // }, [filteredState]);
 
   return (
     <>

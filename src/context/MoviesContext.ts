@@ -1,8 +1,9 @@
 import {createContext} from 'react'
-import { MoviesState } from '../interfaces/interfaces';
+import { MoviesState, Result } from '../interfaces/interfaces';
 
 export interface MoviesContextProps {
     moviesState: MoviesState;
+    filtMovies: (filteredMoives: Result[]) => void;
 }
 
 export const MoviesContext = createContext<MoviesContextProps>({} as MoviesContextProps);

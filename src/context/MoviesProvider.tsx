@@ -3,7 +3,7 @@ import { usePopular } from "../hooks/usePopular";
 import { useNowPlaying } from "../hooks/useNowPlaying";
 import { useTopRated } from "../hooks/useTopRated";
 import { useUpComing } from "../hooks/useUpComing";
-import { MoviesState } from "../interfaces/interfaces";
+import { MoviesState, Result } from "../interfaces/interfaces";
 import { useReducer } from "react";
 import { moviesReducer } from "../reducer/moviesReducer";
 
@@ -18,21 +18,18 @@ export const MoviesProvider = ({ children }: Props) => {
   const { upComing, isLoadingUpComing } = useUpComing();
 
   const movies_state: MoviesState = {
-    // popular: popular,
-    // nowPlaying: nowPlaying,
-    // topRated: topRated,
-    // upComing: upComing,
-    // isLoadingPopular,
-    // isLoadingNowPlaying,
-    // isLoadingTopRated,
-    // isLoadingUpComing,
     filteredMovies: [],
   };
   const [moviesState, dispatch] = useReducer(moviesReducer, movies_state);
+
+  const filtMovies = (filteredMoives: Result[]) => {
+    dispatch({ type: "addFilteredMovies", payload: filteredMoives });
+  };
   return (
     <MoviesContext.Provider
       value={{
         moviesState,
+        filtMovies,
       }}
     >
       {children}
