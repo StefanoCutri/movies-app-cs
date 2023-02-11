@@ -16,6 +16,8 @@ export const Movies = () => {
 
   const filteredState = useContext(MoviesContext);
 
+  console.log(isLoadingPopular);
+
   return (
     <>
       <div className="movies-container">
@@ -31,6 +33,7 @@ export const Movies = () => {
           );
         })}
       </div>
+      {isLoadingPopular && <p>LOADING</p>}
       <p className="movie-type">Popular</p>
       <div className="movies-container">
         {popular.map((p) => {
