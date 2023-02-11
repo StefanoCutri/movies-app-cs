@@ -1,7 +1,8 @@
-import "../styles/navbar.css";
-import logoImg from "../assets/StefanoMovies-1.png";
 import { useRef } from "react";
+import logoImg from "../assets/StefanoMovies-1.png";
 import { SearchInput } from "./SearchInput";
+
+import "../styles/navbar.css";
 
 export const Navbar = () => {
   const navRef = useRef();

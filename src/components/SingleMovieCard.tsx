@@ -1,10 +1,8 @@
-import { useLocation } from "react-router-dom";
-import { Result, Cast } from "../interfaces/interfaces";
-import { Navbar } from "./Navbar";
-
-import "../styles/single-movie.css";
+import { Link, useLocation } from "react-router-dom";
+import { Result } from "../interfaces/interfaces";
 import { useMovieCast } from "../hooks/useMovieCast";
 import { filterGenresById } from "../helpers/filterGenresById";
+import "../styles/single-movie.css";
 
 export const SingleMovieCard = () => {
   const moviesState = useLocation().state as Result;
@@ -34,6 +32,9 @@ export const SingleMovieCard = () => {
         width: "100%",
       }}
     >
+      <Link to="/" replace>
+        <i className="fa-solid fa-arrow-left"></i>
+      </Link>
       <div
         id="single-movie-container"
         style={{

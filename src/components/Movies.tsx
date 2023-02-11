@@ -1,22 +1,19 @@
-import { useContext, useEffect, useReducer } from "react";
+import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 import { MovieCard } from "./MovieCard";
-import "../styles/movie-card.css";
-import { moviesReducer } from "../reducer/moviesReducer";
 import { usePopular } from "../hooks/usePopular";
 import { useNowPlaying } from "../hooks/useNowPlaying";
 import { useTopRated } from "../hooks/useTopRated";
 import { useUpComing } from "../hooks/useUpComing";
 
-export const Movies = () => {
-  const { moviesState } = useContext(MoviesContext);
+import "../styles/movie-card.css";
 
+export const Movies = () => {
   const { popular, isLoadingPopular } = usePopular();
   const { nowPlaying, isLoadingNowPlaying } = useNowPlaying();
   const { topRated, isLoadingTopRated } = useTopRated();
   const { upComing, isLoadingUpComing } = useUpComing();
 
-  const [state, dispatch] = useReducer(moviesReducer, moviesState);
   const filteredState = useContext(MoviesContext);
 
   return (

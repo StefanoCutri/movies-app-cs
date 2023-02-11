@@ -5,7 +5,6 @@ import { MoviesScreen } from "./screens/MoviesScreen";
 
 const App = () => {
   useGenresLocalStorage();
-
   return (
     <Routes>
       <Route path="/" element={<MoviesScreen />} />

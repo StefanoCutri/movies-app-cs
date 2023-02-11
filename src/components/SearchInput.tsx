@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 import { moviesApi } from "../api/moviesApi";
 import { Result } from "../interfaces/interfaces";

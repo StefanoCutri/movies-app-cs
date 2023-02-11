@@ -9,11 +9,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <MoviesProvider>
-      <App />
-    </MoviesProvider>
-  </BrowserRouter>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <MoviesProvider>
+        <App />
+      </MoviesProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
